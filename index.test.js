@@ -1,6 +1,6 @@
-const discord = require('discord.js');
-const client = new discord.Client({ intents: discord.Intents.ALL });
-const client2 = new discord.Client({ intents: discord.Intents.ALL });
+const Discord = require('discord.js');
+const client = new Discord.Client({ intents: Discord.Intents.ALL });
+const client2 = new Discord.Client({ intents: Discord.Intents.ALL });
 const disbut = require('./src/index');
 disbut(client);
 
@@ -14,7 +14,7 @@ client.on('message', async (message) => {
     if (message.author.bot) return;
     if (message.content.startsWith('o')) {
 
-        const embed = new discord.MessageEmbed().setDescription(`${discord.version}`);
+        const embed = new Discord.MessageEmbed().setDescription(`${discord.version}`);
 
         let option = new disbut.MessageMenuOption()
             .setLabel('op').setValue('hi').setDescription('ss');

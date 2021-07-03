@@ -25,7 +25,7 @@ let button = new disbut.MessageButton()
 
 message.channel.send('Hey, i am powered by https://npmjs.com/discord-buttons', button);
 ```
-<b>P.S:</b> You need to Change your `style` to `url`, you don't have `id` for this kind of buttons too, and also make sure you have your URL in button with `setURL` and URL is valid.
+<b>P.S:</b> You need to change your `style` to `url`, you don't have `id` for these kind of buttons too, and also make sure you have your URL in button with `setURL` and the URL is valid.
 
 <img align="center" src="https://cdn.discordapp.com/attachments/846455339419172874/848314748239085608/Main1.png"></img>
 

@@ -1,4 +1,4 @@
-import discord, {
+import Discord, {
   Snowflake,
   Guild,
   Channel,
@@ -49,7 +49,7 @@ declare module 'discord.js' {
   export interface PartialTextBasedChannelFields {
     send(content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
     send(options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
-    send(options: MessageOptions | discord.APIMessage): Promise<Message | Message[]>;
+    send(options: MessageOptions | Discord.APIMessage): Promise<Message | Message[]>;
     send(content: StringResolvable, options: (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
     send(content: StringResolvable, options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
     send(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
@@ -140,8 +140,8 @@ export interface MessageMenuOptionsData {
 }
 
 export class InteractionReply {
-  constructor(client: discord.Client, component: MessageComponent, webhook: WebhookClient);
-  client: discord.Client;
+  constructor(client: Discord.Client, component: MessageComponent, webhook: WebhookClient);
+  client: Discord.Client;
   component: MessageComponent;
   webhook: WebhookClient;
   has: boolean;
@@ -154,18 +154,18 @@ export class InteractionReply {
   delete(): Promise<void>;
 }
 
-export class APIMessage extends discord.APIMessage {
+export class APIMessage extends Discord.APIMessage {
   public components: MessageActionRow[];
 }
 
-export class sendAPICallback extends discord.APIMessage {
+export class sendAPICallback extends Discord.APIMessage {
   public components: MessageActionRow[];
   public flags: number;
 }
 
 export class MessageComponent {
-  constructor(client: discord.Client, data: any, menu: boolean);
-  client: discord.Client;
+  constructor(client: Discord.Client, data: any, menu: boolean);
+  client: Discord.Client;
   id: Snowflake;
   version: any;
   token: string;
@@ -257,7 +257,7 @@ export class MessageMenuOption extends BaseMessageComponent {
   public toJSON(): MessageMenuOptionsData;
 }
 
-export interface MessageOptions extends discord.MessageOptions {
+export interface MessageOptions extends Discord.MessageOptions {
   component?: MessageButton | MessageMenu | MessageActionRow;
   components?: MessageActionRow[];
   button?: MessageButton | MessageButton[];
@@ -285,13 +285,13 @@ export interface ReplyOptions extends MessageOptions {
   flags?: number;
 }
 
-export class WebhookClient extends discord.WebhookClient {
+export class WebhookClient extends Discord.WebhookClient {
   editMessage(message: string, content: any, options?: {}): Promise<any>;
   deleteMessage(message: string): Promise<void>;
   fetchMessage(message: string, cache?: boolean): Promise<any>;
 }
 
-export interface Message extends discord.Message {
+export interface Message extends Discord.Message {
   components: MessageActionRow[];
   createButtonCollector(filter: CollectorFilter, options?: AwaitMessageButtonOptions): ButtonCollector;
   awaitButtons(filter: CollectorFilter, options?: AwaitMessageButtonOptions): Promise<Collection<Snowflake, MessageComponent>>;
@@ -377,30 +377,30 @@ export type MessageAdditions =
 
 export type Awaited<T> = T | Promise<T>;
 
-export interface ExtendedTextChannel extends discord.TextChannel {
+export interface ExtendedTextChannel extends Discord.TextChannel {
   send(content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
   send(options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
-  send(options: MessageOptions | discord.APIMessage): Promise<Message | Message[]>;
+  send(options: MessageOptions | Discord.APIMessage): Promise<Message | Message[]>;
   send(content: StringResolvable, options: (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
   send(content: StringResolvable, options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
   send(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
   send(content: StringResolvable, options: MessageButton | MessageActionRow | MessageMenu): Promise<Message | Message[]>;
 }
 
-export interface ExtendedDMChannel extends discord.DMChannel {
+export interface ExtendedDMChannel extends Discord.DMChannel {
   send(content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
   send(options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
-  send(options: MessageOptions | discord.APIMessage): Promise<Message | Message[]>;
+  send(options: MessageOptions | Discord.APIMessage): Promise<Message | Message[]>;
   send(content: StringResolvable, options: (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
   send(content: StringResolvable, options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
   send(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
   send(content: StringResolvable, options: MessageButton | MessageActionRow | MessageMenu): Promise<Message | Message[]>;
 }
 
-export interface ExtendedNewsChannel extends discord.NewsChannel {
+export interface ExtendedNewsChannel extends Discord.NewsChannel {
   send(content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
   send(options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
-  send(options: MessageOptions | discord.APIMessage): Promise<Message | Message[]>;
+  send(options: MessageOptions | Discord.APIMessage): Promise<Message | Message[]>;
   send(content: StringResolvable, options: (MessageOptions & { split?: false }) | MessageAdditions): Promise<Message>;
   send(content: StringResolvable, options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
   send(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
@@ -408,6 +408,6 @@ export interface ExtendedNewsChannel extends discord.NewsChannel {
 }
 
 declare module 'discord-buttons' {
-  export default function (client: discord.Client): void;
-  export function multipleImport(...clients: discord.Client[]): void;
+  export default function (client: Discord.Client): void;
+  export function multipleImport(...clients: Discord.Client[]): void;
 }
