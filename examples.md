@@ -1,2 +1,2 @@
 # Examples moved
-## See https://discord-buttons.js.org/d/examples/buttons.html
+## See [new examples](https://discord-buttons.js.org/d/examples/buttons.html)
