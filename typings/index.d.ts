@@ -33,6 +33,14 @@ declare module 'discord.js' {
     menu?: MessageMenu | MessageMenu[];
     menus?: MessageMenu | MessageMenu[];
   }
+  
+  export interface MessageEditOptions
+  {
+      component?: MessageButton | MessageActionRow;
+      components?: MessageActionRow[];
+      button?: MessageButton | MessageButton[];
+      buttons?: MessageButton | MessageButton[];
+  }
 
   export interface Message {
     components: MessageActionRow[];
@@ -54,6 +62,15 @@ declare module 'discord.js' {
     send(content: StringResolvable, options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
     send(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
     send(content: StringResolvable, options: MessageButton | MessageActionRow | MessageMenu): Promise<Message | Message[]>;
+  }
+  
+  export interface Message
+  {
+      edit(
+          content: APIMessageContentResolvable | MessageEditOptions | MessageEmbed | APIMessage,
+        ): Promise<Message>;
+      edit(content: StringResolvable, options: MessageEditOptions | MessageEmbed): Promise<Message>;
+      edit(content: StringResolvable, options: MessageEditOptions | MessageEmbed | MessageButton | MessageActionRow): Promise<Message>;
   }
 }
 
