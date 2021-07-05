@@ -20,8 +20,8 @@ npm i discord-buttons
 
 ## 📜 | Setup
 ```js
-const Discord = require('discord.js'); // Define the discord.js module
-const client = new Discord.Client(); // Create a discord.js client (constructor)
+const discord = require('discord.js'); // Define the discord.js module
+const client = new discord.Client(); // Create a discord.js client (constructor)
 const disbut = require('discord-buttons');
 disbut(client);
 ```
