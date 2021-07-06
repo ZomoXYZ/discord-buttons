@@ -177,7 +177,6 @@ export class InteractionReply {
   has: boolean;
   isEphemeral: boolean;
   send(content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions): Promise<this>;
-  send(content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions): Promise<this>;
   send(options: MessageOptions & { split: true | SplitOptions }): Promise<this[]>;
   send(options: MessageOptions | discord.APIMessage): Promise<this | this[]>;
   send(content: StringResolvable, options: (MessageOptions & { split?: false }) | MessageAdditions): Promise<this>;
