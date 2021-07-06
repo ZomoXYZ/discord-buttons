@@ -38,10 +38,10 @@ declare module 'discord.js' {
   {
     component?: MessageButton | MessageMenu | MessageActionRow;
     components?: MessageActionRow[];
-    button?: MessageButton | MessageButton[];
-    buttons?: MessageButton | MessageButton[];
-    menu?: MessageMenu | MessageMenu[];
-    menus?: MessageMenu | MessageMenu[];
+    button?: MessageButton | [MessageButton, ...MessageButton[]];
+    buttons?: MessageButton | [MessageButton, ...MessageButton[]];
+    menu?: MessageMenu | [MessageMenu, ...MessageMenu[]];
+    menus?: MessageMenu | [MessageMenu, ...MessageMenu[]];
   }
 
   export interface Message {
