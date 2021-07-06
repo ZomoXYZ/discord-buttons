@@ -36,16 +36,38 @@ declare module 'discord.js' {
   
   export interface MessageEditOptions
   {
-      component?: MessageButton | MessageActionRow;
-      components?: MessageActionRow[];
-      button?: MessageButton | MessageButton[];
-      buttons?: MessageButton | MessageButton[];
+    component?: MessageButton | MessageMenu | MessageActionRow;
+    components?: MessageActionRow[];
+    button?: MessageButton | MessageButton[];
+    buttons?: MessageButton | MessageButton[];
+    menu?: MessageMenu | MessageMenu[];
+    menus?: MessageMenu | MessageMenu[];
   }
 
   export interface Message {
     components: MessageActionRow[];
     createButtonCollector(filter: CollectorFilter, options?: AwaitMessageButtonOptions): ButtonCollector;
     awaitButtons(filter: CollectorFilter, options?: AwaitMessageButtonOptions): Promise<Collection<Snowflake, MessageComponent>>;
+    edit(
+        content: APIMessageContentResolvable | MessageEditOptions | MessageEmbed | APIMessage,
+      ): Promise<Message>;
+    edit(content: StringResolvable, options: MessageEditOptions | MessageEmbed): Promise<Message>;
+    edit(content: StringResolvable, options: MessageEditOptions | MessageEmbed | MessageButton | MessageActionRow): Promise<Message>;
+    reply(
+        content: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions,
+      ): Promise<Message>;
+    reply(options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
+    reply(options: MessageOptions | APIMessage): Promise<Message | Message[]>;
+    reply(
+        content: StringResolvable,
+        options: (MessageOptions & { split?: false }) | MessageAdditions,
+      ): Promise<Message>;
+    reply(
+        content: StringResolvable,
+        options: MessageOptions & { split: true | SplitOptions },
+      ): Promise<Message[]>;
+    reply(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
+    reply(content: StringResolvable, options: MessageOptions | MessageButton | MessageActionRow): Promise<Message>;
   }
 
   export interface WebhookClient {
@@ -62,15 +84,6 @@ declare module 'discord.js' {
     send(content: StringResolvable, options: MessageOptions & { split: true | SplitOptions }): Promise<Message[]>;
     send(content: StringResolvable, options: MessageOptions): Promise<Message | Message[]>;
     send(content: StringResolvable, options: MessageButton | MessageActionRow | MessageMenu): Promise<Message | Message[]>;
-  }
-  
-  export interface Message
-  {
-      edit(
-          content: APIMessageContentResolvable | MessageEditOptions | MessageEmbed | APIMessage,
-        ): Promise<Message>;
-      edit(content: StringResolvable, options: MessageEditOptions | MessageEmbed): Promise<Message>;
-      edit(content: StringResolvable, options: MessageEditOptions | MessageEmbed | MessageButton | MessageActionRow): Promise<Message>;
   }
 }
 
