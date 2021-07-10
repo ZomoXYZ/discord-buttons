@@ -95,10 +95,10 @@ module.exports = {
   resolveType(type) {
     return typeof type === 'string' ? MessageComponentTypes[type] : type;
   },
-  resolveMaxValues(m1, m2) {
+  resolveMaxValues(m1, m2 = 0) {
     return m1 || m2;
   },
-  resolveMinValues(m1, m2) {
+  resolveMinValues(m1, m2 = 0) {
     return m1 || m2;
   },
   isEmoji(string) {
